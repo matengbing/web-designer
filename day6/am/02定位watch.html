@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>监控位置信息</title>
+	</head>
+	<body>
+		<div id="tip"></div>
+		<div id="log"></div>
+		<div id="lat"></div>
+		<div id="acc"></div>
+		<div id="toldis"></div>
+		<div id="error"></div>
+		
+		<input type="button" onclick="" value="停止" />
+	</body>
+	
+	<script type="text/javascript" defer="defer">
+		var tolDis=0;  /*总距离*/
+		var lastLat=0;
+		var lastLog=0;
+		/*定位成功回调函数*/
+		function geo_success(position){
+			console.log(position.coords);
+			var log=position.coords.longitude;
+			var lat=position.coords.latitude;
+			document.getElementById("tip").innerHTML=(new Date().toLocaleDateString());
+			document.getElementById("log").innerHTML="经度:"+log;		
+			document.getElementById("lat").innerHTML="纬度:"+lat;
+			document.getElementById("acc").innerHTML="精确度:"+position.coords.accuracy+"米";
+			
+			/*计算移动距离*/
+			if((lastLat !=null) && (lastLog !=null)){
+				var currentDis=distance(lat,lon,lastLat,lastLog);
+				document.getElementById("dis").innerHTML="本次移动距离："+currentDis.toFixed(4)+"千米";
+				tolDis+=currentDis;
+				document.getElementById("toldis").innerHTML="总计移动距离："+tolDis.toFixed(4)+"千米";
+			}
+			lastLat=lat;
+			lastLog=lon;
+		}
+		
+		function distance(latitude1, longitude1, latitude2, longitude2) {
+			//R是地球的半径，以km为单位
+			var R = 6371;
+			var deltaLatitude = toRadians(latitude2 - latitude1);
+			var deltaLongitude = toRadians(longitude2 - longitude1);
+			latitude1 = toRadians(latitude1);
+			latitude2 = toRadians(latitude2);
+			var a = Math.sin(deltaLatitude/2) * Math.sin(deltaLatitude / 2) + Math.cos(latitude1) * Math.cos(latitude2) * Math.sin(deltaLongitude / 2) * Math.sin(deltaLongitude / 2);
+			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+			var d = R * c;
+			return d;
+			}
+		
+		function toRadians(degree){
+			return degree+Math.PI/180;
+		}
+		/*定位失败回调函数*/
+		function geo_error(error){
+			var error_div=document.getElementById("error");
+			switch(error.code){
+				case 0:
+					error_div.innerHTML="未知错误";
+					break;
+				case 1:
+					error_div.innerHTML="没有定位权限";
+					break;
+				case 2:
+					error_div.innerHTML="无法获取当前位置";
+					break;
+				case 3:
+					error_div.innerHTML="操作超时";
+					break;
+			}
+//			 alert('ERROR(' + error.code + '): ' + error.message);
+		}
+		/*定位参数*/
+		var options={};
+		/*判断当前浏览器是否支持定位*/
+		
+		
+		
+		function stopWatch(){
+			navigator.geolocation.clearWatch(watchid);
+		}
+		window.onload=function(){
+			if (navigator.geolocation){
+			watchid=navigator.geolocation.watchPosition(geo_success,geo_error,options);
+		}else{
+			var tip=document.getElementById("tip");
+			tip.innerHTML("您的浏览器版本太久，建议使用最新版本");
+		}
+		}
+	</script>
+</html>

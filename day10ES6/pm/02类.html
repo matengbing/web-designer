@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			
+			class person{
+				constructor(name,age){
+					this.name=name;
+					this.age=age;
+				}
+				sayHello(){
+					console.log(`name:${this.name}age:${this.age}`);
+				}
+				
+				static showAge(){
+					console.log("我是静态方法");
+				}
+			}
+//			let p=new person("张三",21);
+//			p.sayHello();
+//			console.log(p);
+//			person.showAge();
+//			p.showAge();  //报错  p是实例，不能调用静态方法
+
+
+
+			class Student extends person{
+				constructor(name,age,no){
+					super(name,age);
+					this.no=no;
+				}
+				
+			}
+			let stu=new Student("张三","21","10010");
+			console.log(stu);
+			stu.sayHello();
+			Student.showAge();
+		</script>
+	</body>
+</html>

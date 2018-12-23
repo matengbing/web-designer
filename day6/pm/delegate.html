@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<input type="button" id="" value="添加" />
+		
+		<script src="../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(':button').click(function(){
+				var li=$('<li>4</li>');
+				$('ul').append(li);
+			});
+			
+//			$('li').click(function(){
+//				alert(1);
+//			});  /*这样动态添加的内容事件没有加上去*/
+			var data={
+				name:'json',
+				age:20
+			};
+			$('ul').delegate('li','click',data,function(e){
+				
+				console.log(e);
+//				console.log(data.name);
+				console.log(e.data.name);
+			});
+			
+			
+			$('<li>4</li>')
+			add
+			andSelf
+			$('div').find('p').andSelf.addClass('border');
+			append
+			remove
+			clone
+			addClass('active')
+			removeClass('')
+			toggleClass('')
+		</script>
+	</body>
+</html>

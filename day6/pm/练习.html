@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table tr,table th,table td {
+				border: 1px solid chartreuse;
+				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="table">
+			<caption>表单</caption>
+			<tr>
+				<th><input type="checkbox" class="all_checked" />全选</th>
+				<th>姓名</th>
+				<th>年龄</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" /></td>
+				<td>张三</td>
+				<td>21</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" /></td>
+				<td>李四</td>
+				<td>22</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" /></td>
+				<td>王五</td>
+				<td>21</td>
+			</tr>
+		</table> 
+		
+		<script src="../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.all_checked').click(function(){
+					$('input[name="name"]').prop('checked',$(this).prop('checked'));
+					if ($(this).prop('checked')){ 
+						$('input[name="name"]').parent('td').parent('tr').css('background-color','red');
+					}else{ 
+						$('input[name="name"]').parent('td').parent('tr').css('background-color','white');
+					}
+			}); 
+			
+			
+			$('input[type="checkbox"]').click(function(){
+				if ($(this).prop('checked')){
+					$(this).parent('td').parent('tr').css('background-color','red');
+				}else{
+					$(this).parent('td').parent('tr').css('background-color','white');
+				}
+			});
+			});
+			
+		</script>
+	</body>
+</html>

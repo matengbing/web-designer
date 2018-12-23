@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>foreach</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*arr.forEach*/
+//			let arr=[1,2,3,4];
+//			arr.forEach(function(val,index,arr){
+//				console.log(val,index,this);  //this是wnidow
+//			}); 
+
+//			let arr=[
+//				{
+//					name:"aaa",
+//					age:"15"
+//				},
+//				{
+//					name:"bbb",
+//					age:"16"
+//				},
+//				{
+//					name:"bbb",
+//					age:"17"
+//				}
+//			];
+//			
+//			arr.map(function(item,index,arr){
+//				console.log(item,index,arr);   //item指arr中的数组对象
+//			});
+
+//			var arr = [1, 2, 4, 5, 6, 9, 10, 15];
+//			var r = arr.filter(function (x) {
+//			    return x % 2 !== 0;
+//			});
+//			console.log(r); // [1, 5, 9, 15]
+			
+			/*some用法*/
+//			var ages = [3, 10, 18, 20];
+//			function checkAdult(age) {
+//			    return age >= 18;
+//			}
+//			function myFunction() {
+//			    document.getElementById("demo").innerHTML = ages.some(checkAdult);
+//			}  //true
+//		
+
+//			//测试是否所有数组元素都大于等于10：
+//			function isBigEnough(element, index, array) {
+//			    return (element >= 10);
+//			}
+//			var passed = [12, 5, 8, 130, 44].every(isBigEnough);
+//			// passed is false
+//			passed = [12, 54, 18, 130, 44].every(isBigEnough);
+//			// passed is true
+//			//结果：
+//			//[12, 5, 8, 130, 44].every(isBigEnough) 返回 ： false 
+//			//[12, 54, 18, 130, 44].every(isBigEnough) 返回 ： true 
+
+			
+//			var names=[1,2,3,4,5];
+//			//迭代，依次计算，返回一个最终值
+//			nameresult = names.reduce(function(prev,cur,index,array){   
+//				//reduce从前向后迭代，reduceRight从后向前迭代。
+//			    return prev+cur;                                    
+//			    //迭代从第二项开始，prev初始值为第一项，cur初始值为第二项。计算值自动传给下一函数的prev，返回最后一次迭代产生的值
+//			});
+//			console.log(nameresult);
+
+//			let names=[2,2,3];
+//			//迭代，依次计算，返回一个最终值
+//			let nameresult = names.reduce(function(prev,cur,index){   
+////				return Math.pow(prev,cur);  //64
+//			    return prev**cur;   //64                     
+//			});
+//			console.log(nameresult);
+
+			
+//			/*for of*/
+//			let arr=[1,3,3,4,5,6]
+//			for (let val of arr){
+//				console.log(val);
+//			}
+
+//			let arr=[1,3,3,4,5,6];
+//			for(let index of arr.keys()){
+//				console.log(index);
+//			}
+//		
+
+//			let arr=[1,3,3,4,5,6];
+//			for(let item of arr.entries()){
+//				console.log(item);
+//			}
+
+
+			
+		</script>
+	</body>
+</html>

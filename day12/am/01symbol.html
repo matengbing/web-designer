@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>symbol</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+//			let a=Symbol('a');
+//			let b=Symbol();
+//			console.log(a); //Symbol(a)
+//			console.log(b); //Symbol()
+//			console.log(a==b); //false
+
+
+			let name=Symbol();
+			let person={
+				[name]:"zhansan",
+				age:18,
+				showname:function(){
+					return this[name];
+				}
+			}
+//			console.log(person.[name]); //报错
+			console.log(person[name]);
+			console.log(person.showname());
+		</script>
+	</body>
+</html>

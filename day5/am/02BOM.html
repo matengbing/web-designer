@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+//			result=window.confirm("确定要关闭吗？");
+//			if (result){
+//				console.log("是");
+//			}else{
+//				console.log("否");
+//			}
+
+//			function myFunction(){
+//			    var x;
+//			    var person=prompt("请输入你的名字","Harry Potter");
+//			    if (person!=null && person!=""){
+//			        x="你好 " + person + "! 今天感觉如何?";
+//			        console.log(x);
+//			    }
+//			}
+//			myFunction();
+
+			var interValid;
+			function judgeValue(){
+				var time=window.document.forms[0].time.value;
+				interValid=window.setInterval("addNum()",1000);
+			}
+			function addNum(){
+				var time=window.document.forms[0].time;
+				time.value=parseInt(time.value)+1;
+			}
+			
+			function getuseragent(){
+//				console.log(window.navigator.userAgent.toLowerCase());
+				var userAgent=window.navigator.userAgent.toLowerCase();
+				console.log(userAgent);
+				if (userAgent.indexOf("MSIE")>-1){
+					console.log("IE浏览器");
+				}else if(userAgent.indexOf("Firefox")>-1){
+					console.log("火狐浏览器");	
+				}else if (userAgent.indexOf("chrome")>-1){
+					console.log("谷歌浏览器");
+				}
+			}
+			</script>
+	</head> 
+	<body> 
+		<form action="">
+			<input type="text" name="time" />
+			<input type="button" value="开始" onclick="judgeValue();"/>
+			<input type="button" value="结束" onclick="window.clearInterval(interValid);" />
+		</form>
+		
+		
+		<form>
+			<input type="button" value="前进"onclick="window.history.forward()" onc /><br />
+			<input type="button" value="后退"  onclick="window.history.back()"/><br />
+			<input type="button" value="刷新" onclick="window.history.go()" /><br />
+		</form>
+		
+		<form>
+			<input type="button" value="三秒后跳转" onclick="setTimeout(window.location.href='http://www.baidu.com',3);" />
+		</form>
+		
+		<form>
+			<input type="button" value="获取代理" onclick="getuseragent();" />
+		</form>
+	</body> 
+</html>
+ 

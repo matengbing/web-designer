@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var person={
+				name:"zhangsan",
+				age:21,
+				show:function(a,b){
+					console.log(this.name,this.age);
+					console.log(a,b);
+				}
+			} 
+			
+//			console.log(person.name);
+//			person.show(1,2);
+			
+			var person2={
+				name:'wangwu', 
+				ahe:21,
+				enjoy:13
+			}
+			person.show.call(person2,'shuijiao','shangke');
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			.main {
+				width: 800px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.bannerbox {
+				width: 4000px;
+				overflow: hidden;
+				transition: all 1s;
+				
+			}
+			
+			.bannerbox li {
+				float: left;
+				width: 800px;
+				cursor: pointer;
+				
+			}
+			
+			.bannerbox li img {
+				width: 100%;
+			}
+			
+			.bannerBtn {
+				width: 120px;
+				height: 17px;
+				margin: 0 auto;
+				/*overflow: hidden;*/
+				clear: both;
+				margin-top: -20px;
+				position: relative;
+			}
+			.bannerBtn li{
+				width: 10px;
+				height: 10px;
+				border: 1px solid white;
+				float: left;
+				margin-left: 10px;
+				border-radius: 50%;
+				background-color: rgba(123,123,123,0.5);
+				/*margin-top: -20px;*/
+				/*cursor: pointer;*/
+			}
+			.bannerBtn li.active {
+				background-color: rgba(255,255,255);
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<ul class="bannerbox">
+				<li><img src="../images/827149262194036037.jpg" /></li>
+				<li><img src="../images/493972379168861540.jpg"/></li>
+				<li><img src="../images/866511339066391919.jpg" /></li>
+				<li><img src="../images/887003105387567726.jpg" /></li>
+				<li><img src="../images/100237340376716868.jpg" /></li>
+			</ul>
+			
+			<ul class="bannerBtn">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+	
+	<script type="text/javascript"  defer="true">
+		var ul=document.getElementsByClassName("bannerbox")[0];
+		/*下面圆点数组*/
+		var btns=document.querySelectorAll(".bannerBtn li");
+		console.log(btns.length);
+		/*images集合*/
+		lists=document.querySelectorAll(".bannerbox li");
+		var count=0; 
+		var scrollBanner;
+		/*两秒滚动一次*/
+		function startScroll(){
+			scrollBanner=setInterval("moveLeft()",2000);
+		}
+		/*设置margin-left实现滚动效果*/
+		function moveLeft(){
+			count++;
+			if (count>=lists.length){
+				count=0;
+			}
+			ul.style.marginLeft=-800*count+"px";
+			for (var i=0;i<btns.length;i++){
+				btns[i].className="";
+			}
+			btns[count].className="active";
+		}
+		  
+		/*暂停定时滚动*/
+		function stop(){
+			var imgs=document.querySelectorAll(".bannerbox img");
+			for ( var i=0;i<imgs.length;i++){
+				imgs[i].onmousemove=function(){
+					clearInterval(scrollBanner);
+				}
+				imgs[i].onmouseout=function(){
+					setInterval("moveLeft()",2000);
+				}
+			} 
+		
+		}
+		/*下方圆点*/
+		function setImg(){
+			var btns=document.querySelectorAll(".bannerBtn li");
+			for (var i=0;i<btns.length;i++){
+				btns[i].index=i;
+				btns[i].onmousemove=function(){
+					clearInterval(scrollBanner);
+					ul.style.marginLeft=-800*this.index+"px";
+					count=this.index;
+					for (var i=0;i<btns.length;i++){
+						btns[i].className="";
+					}
+					this.className="active";
+				}
+				btns[i].onmouseout=function(){
+					startScroll();
+				}
+			}
+		}
+		
+		window.onload=function(){
+			startScroll();
+			stop();
+			setImg();
+		}
+	</script>
+</html>

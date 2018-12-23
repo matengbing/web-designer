@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			let 函数名=(参数列表)=>{函数体}
+
+
+//			function show(a,b){
+//				return a+b;
+//			}
+//			show(1,2);
+//			let show=(a,b)=>{
+//				return a+b;
+//			}
+//			console.log(show(1,2));
+			/*注意：
+			 1.this的问题
+			 
+			 * */
+			
+//			var id=2;
+//			let json={
+//				"id":1,
+//				show:function(){
+//					setTimeout(()=>{
+//						console.log(this.id); //1
+//					},1000);
+//					console.log(this.id);   //1
+//				}
+//			}
+//			json.show();
+//			
+
+
+			/*3
+			 
+			 * */
+//			function show3(){
+//				this.age=3;
+//			}
+//			console.log(new show3().age);
+//			
+			
+			let show3=()=>{
+				this.age=456;
+			}
+			console.log(let new show3().age); -->报错
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form>
+			<input type="text" name="" id="" value="" /><br />
+			<input type="button" name="" id="" value="提交" /><br />
+			<input type="button" id="unbind" value="解绑" />
+		</form>
+		<script src="../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(':text').focus(function(){
+				$(this).css("border","red 1px solid"); 
+			});
+			$(':text').bind('blur',function(){
+				$(this).css("border","chartreuse 1px solid"); 
+			});
+			/*第一个函数是悬停，第二个是不悬停*/
+			$(':button').hover(function(){
+				$(this).css('color','red');
+			},function(){
+				$(this).css('color','greenyellow');
+			});
+			
+			/*解除绑定的所有事件*/
+			$('#unbind').click(function(){
+				$('button').unbind();
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*对象：参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain*/
+			var dog={
+				name: "zhangsan",
+				age: 21,
+				jump: function(){
+					alert("他会跳");
+				}
+			};
+//			alert(dog.name+dog.age);
+//			dog.jump();
+
+//			dog.weight=30;
+//			alert(dog.weight);
+//			dog.age=10;
+			
+//			console.log(typeof(dog));
+//			for (var i in dog){
+//				console.log(i);  /*-->遍历属性名*/
+//				console.log(dog[i]);  /*遍历属性值*/
+//			}
+			
+//			delete dog.age;
+//			console.log(dog.age);   /*-->undefined*/
+
+			function Car(make, model, year) {
+			  this.make = make;
+			  this.model = model;
+			  this.year = year;
+			}
+			var mycar = new Car("Eagle", "Talon TSi", 1993);
+			console.log(mycar.make);  /*-->Eagle*/
+
+//			var s=new String("abc");
+//			console.log(s.length);
+//			var d=new Date();
+//			console.log(d.getMonth());
+//			console.log(d.toLocaleDateString());
+//			console.log(d.getFullYear());
+//			console.log(d.getMonth());
+//			console.log(d.getDay());
+//			console.log(Math.floor(3.45));/*向下取整*/
+//			console.log(Math.max(1,2)); /*最大值*/
+//			console.log(Math.random()); /*0-1随机数*/
+//			console.log(Math.round(1.2)); /*四舍五入*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

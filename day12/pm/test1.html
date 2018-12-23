@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				font-family: 'Microsoft YaHei';
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: #f5f5f5;
+			}
+			ul{
+				list-style: none;
+			}
+			.G4_ul{
+				height: 245px;
+				width: 594px;
+				margin: 20px 0 0 20px;
+				/*border: 1px solid red;*/
+			}
+			
+			
+			.G4_ul>li{
+				position: relative;
+				float: left;
+				width: 191px;
+				height: 100%;
+				text-align: center;
+				cursor: pointer;
+				background: white;
+				margin-right: 10px;
+				/*border: 1px solid red;*/
+				
+				-webkit-transition: all .2s linear;
+			    -moz-transition: all .2s linear;
+			    -ms-transition: all .2s linear;
+			    -o-transition: all .2s linear;
+			    transition: all .2s linear;				
+			}
+			.G4_ul>li:last-child{
+				margin-right: 0 !important;
+			}
+			.G4_ul>li:hover{
+				-webkit-box-shadow: 0 15px 30px #ddd;
+				-moz-box-shadow: 0 15px 30px #ddd;
+				-ms-box-shadow: 0 15px 30px #ddd;
+				-o-box-shadow: 0 15px 30px #ddd;
+				box-shadow: 0 15px 30px #ddd;
+				-webkit-transform: translate3d(0,-2px,0);
+				-moz-transform: translate3d(0,-2px,0);
+				-ms-transform: translate3d(0,-2px,0);
+				-o-transform: translate3d(0,-2px,0);
+				transform: translate3d(0,-2px,0);
+			}	
+			
+			
+			.G4_ul>li .topic{
+				font-size: 16px;
+			    color: #333;
+			    margin-top: 30px;
+			}
+			.G4_ul>li .subtopic{
+			    font-size: 12px;
+			    color: #959595;
+			    line-height: 22px;				
+			}
+			.G4_ul>li .imgDiv{
+				width: 139px;
+				height: 82px;
+				position: absolute;
+				top: 105px;
+				left: 50%;
+				margin-left: -70px;
+			}
+			.imgDiv .imgCoverDiv{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.G4_ul>li .imgCoverDiv .topic{
+			    font-size: 14px;
+			    color: #333;
+			    font-weight: bold;
+			    margin-top: 35px;
+			}
+			.G4_ul>li .imgCoverDiv .subtopic{
+				margin: 3px auto 0;
+			    width: 118px;
+			    height: 15px;
+			    font-size: 12px;
+			    line-height: 15px;
+			    line-height: 13px\9;
+			    line-height: 15px\0;
+			    color: #fff;
+			    background: url(../img/orageBG.png) no-repeat;
+			}
+			
+			
+			.pro_style {
+			    position: absolute;
+			    /*left: 0;
+			    bottom: 15px;*/
+			    width: 60px;
+			    height: 17px;
+			    line-height: 17px;
+			    color: #fff;
+			    font-size: 12px;
+			    background: #c3f;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="G4_ul">
+			<li>
+				<p class="topic">冰激凌套餐</p>
+				<p class="subtopic">流量派</p>
+				<div class="imgDiv">
+					<img src="../img/phone_Card_icon2.png"/>
+					<div class="imgCoverDiv">
+						<p class="topic">流量不限量</p>
+						<p class="subtopic">预存送电子券</p>
+					</div>
+				</div>
+				<div class="pro_style"><!--新品--></div>
+			</li>
+			<li>
+				<p class="topic">惠民卡</p>
+				<p class="subtopic">全民升级</p>
+				<div class="imgDiv">
+					<img src="../img/phone_Card_icon2.png"/>
+					<div class="imgCoverDiv">
+						<p class="topic">1G国内流量</p>
+						<p class="subtopic">月费低至20</p>
+					</div>
+				</div>
+				<div class="pro_style"><!--热卖--></div>
+			</li>
+			<li>
+				<p class="topic">大冰神 团购版</p>
+				<p class="subtopic">月费低至7折</p>
+				<div class="imgDiv">
+					<img src="../img/phone_Card_icon2.png"/>
+					<div class="imgCoverDiv">
+						<p class="topic">流量语言任性用</p>
+						<p class="subtopic">3人团月费低至7折</p>
+					</div>
+				</div>
+				<div class="pro_style"><!--促销--></div>
+			</li>
+		</ul>
+		
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="module" src="../js/testHover.js" >
+			
+		</script>
+	</body>
+</html>

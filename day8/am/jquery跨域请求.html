@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="content">
+			<select class="city">
+				<option value="0">-请选择-</option>
+				<option value="beijing">北京</option>
+				<option value="shanghai">上海</option>
+				<option value="xinzhou">忻州</option>
+			</select>
+			
+			<div class="content_weather">
+				
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			/*
+			 1.获取下拉框的值
+			 2.根据选中的值拼接获取天气数据url
+			 3.通过ajax获取天气数据
+			 4.显示天气信息
+			 * */
+			
+			
+			/*1.获取下拉框的值*/
+			var city;
+			$('.city').change(function(){
+				city=$(this).val();
+				if(city=='0'){
+					alert("请选择有效城市");
+					return;
+				}
+				var url=getApiUrl(city);
+				console.log(url);
+				getweather(url);
+				
+			});
+			
+			function getApiUrl(city){
+				var url='https://free-api.heweather.com/v5/now?city='+city+'&key=452970d722e14415bd7ac7eb391b0e11';
+				return url;
+			}
+			
+			function getweather(baseurl){
+				$.ajax({
+					type:"get",
+					url:baseurl,
+					dataType:"jsonp",
+					
+					success: function(data) {
+					      console.log(data);
+							var msg=data.HeWeather5[0];
+							$('.content_weather').html("<ul><li>地点："+msg.basic.city+"</li><li>天气："+msg.now.cond.txt+"</li><li>温度："+msg.now.fl+"</li><li>风向："+msg.now.wind.dir+"</li></ul>");
+					   },
+					error:function(error){
+						
+					}
+				});
+			}
+			
+		</script>
+	</body>
+</html>

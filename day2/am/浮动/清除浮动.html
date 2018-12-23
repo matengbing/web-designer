@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.content {
+				border: 5px solid red;
+				max-width: 1024px;     /*最大宽度*/
+				margin: 0 auto; /*页面水平居中显示*/
+			}
+			
+			.left,.right {
+				border: 5px solid green;
+			}
+			
+			.left {
+				width: 30%;
+				float: left;
+			}
+			.right {
+				width: 60%;
+				float: right;
+			}
+			
+			.clear {
+				zoom: 1;
+				clear: both;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			ul li {
+				float: left;
+				margin: 0 10px;
+			}
+			
+			
+			.clearfix:after {
+				
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="content">
+			<div class="left">
+				左侧
+			</div>
+			
+			<div class="right">
+				右侧
+				<ul>
+					<li>首页1</li>
+					<li>首页2</li>
+					<li>首页3</li>
+					<li>首页4</li>
+				</ul>
+			</div>
+			
+			<div class="clear">
+				
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul {
+				list-style: none;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			window.onload=function(){
+				var ul=document.getElementById("ul");
+				var lists=ul.getElementsByTagName("li");
+				for (var i=0;i<lists.length;i++){
+					lists[i].onmouseover=function(){
+						this.style.backgroundColor="red";
+						var previous=this.previousElementSibling;
+						var next=this.nextElementSibling;
+						if (previous!=null){
+							previous.style.backgroundColor="yellow";
+						}
+						if (next!=null){
+							next.style.backgroundColor="yellow";
+						} 
+					} 
+					lists[i].onmouseout=function(){
+						var previous=this.previousElementSibling;
+						var next=this.nextElementSibling;
+						this.style.backgroundColor="white";
+						if (previous!=null){
+							previous.style.backgroundColor="white";
+						}
+						if (next!=null){
+							next.style.backgroundColor="white";
+						}
+					}
+				} 
+			}
+		</script>
+	</head>
+	<body>
+		
+		<div>
+			<ul id="ul">
+				<li>AAAAAAAAAAAAAAAAA</li>
+				<li>BBBBBBBBBBBBBBBBB</li>
+				<li>CCCCCCCCCCCCCCCCC</li>
+				<li>DDDDDDDDDDDDDDDDD</li>
+				<li>EEEEEEEEEEEEEEEEE</li>
+				<li>FFFFFFFFFFFFFFFFF</li>
+			</ul>
+		</div>
+	</body>
+</html>

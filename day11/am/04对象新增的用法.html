@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			console.log(NaN==NaN);  //false
+//			console.log(null==null);  //true
+//			console.log(undefined==undefined);  //true
+//			console.log(Number.isNaN(NaN));  //true
+//			let bn=Object.is(NaN,Number);  //true
+
+//			console.log(-0==+0);  //true
+//			console.log(Object.is(+0,-0));//false
+//			console.log(Object.is("aa","aa")); //true
+
+
+//			Object.assign()
+
+//			let json={
+//				name:"a"	
+//			}
+//			let json2={
+//				age:"21"	
+//			}
+//			let json3={
+//				post:"教师"	
+//			}
+//			let obj=Object.assign({},json,json2,json3);
+//			console.log(obj);
+
+
+			let arr=["a","b","c"];
+			let arr2=["d"];
+			let nArr=Object.assign([],arr,arr2);
+			console.log(nArr);
+		</script>
+	</body>
+</html>

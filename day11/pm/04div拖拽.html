@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>div拖拽效果</title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				cursor: pointer;
+			}
+			#div1 {
+				background-color: blanchedalmond;
+				top: 100px;
+				left: 0px;
+			}
+			#div2 {
+				background-color: chartreuse;
+				top: 100px;
+				right: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			111
+		</div>
+		<div id="div2">
+			222
+		</div>
+		
+		
+		<script type="text/javascript">
+			class Drag{
+				/*构造器传入对象*/
+				constructor(obj){
+					this.obj=obj;
+					this.x=0;
+					this.y=0;
+					this.startDrag();
+				}
+				startDrag(){
+
+					this.obj.onmousedown=(e)=>{
+//						console.log(e);
+						/*鼠标距离div左边和上边的距离*/
+						this.x=e.clientX-this.obj.offsetLeft;
+						this.y=e.clientY-this.obj.offsetTop;
+						console.log(this.x,this.y);
+						/*鼠标移动事件*/
+						document.onmousemove=this.move.bind(this);
+						document.onmouseup=this.endDrag.bind(this);
+					};
+				}
+				move(e){
+					this.obj.style.left=e.clientX-this.x+"px";
+					this.obj.style.top=e.clientY-this.y+"px";
+				}
+				endDrag(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}
+			}
+			
+			
+			class ziDrag extends Drag{
+				move(e){
+					super.move(e);
+					/**/
+					if(this.obj.offsetLeft<=0){
+						this.obj.style.left=0+"px";
+					}
+					if(this.obj.offsetTop<=0){
+						this.obj.style.top=0+"px";
+					}
+					let winth_window=window.innerWidth;
+					let height_window=window.innerHeight;
+					if(winth_window<this.obj.clientWidth+this.obj.offsetLeft){
+						console.log(this.obj.clientWidth+this.obj.offsetLeft);
+						this.obj.style.left=winth_window-this.obj.clientWidth+"px";
+					}
+					if(height_window<this.obj.clientWidth+this.obj.offsetTop){
+						console.log(this.obj.clientWidth+this.obj.offsetTop);
+						this.obj.style.top=height_window-this.obj.clientWidth+"px";
+					}
+					
+				}
+			}
+			new ziDrag(document.getElementById('div1'));
+			new ziDrag(document.getElementById('div2'));
+		</script>
+	</body>
+</html>

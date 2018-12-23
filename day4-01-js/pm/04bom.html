@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var times;
+			function gettime(){
+				var now =new Date();
+				var hh=now.getHours();
+				var mi=now.getMinutes();
+				var se=now.getSeconds();
+				var obj=document.getElementById("times");
+				obj.value=hh+":"+mi+":"+se;
+			}
+			function starttime(){
+				times=setInterval("gettime()",1000);
+			}
+			function stoptime() {
+				clearInterval(times);
+			}
+			
+		</script>
+	</head> 
+	<body> 
+		<input type="text" name="times" id="times" value="" /><br />
+		<input type="button" value="开始" onclick="starttime();"/>
+		<input type="button" onclick="stoptime();" value="停止" />
+	</body>
+</html>

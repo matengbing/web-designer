@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新增数据结构</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*set*/
+			/*
+			 new Set()
+			 * */
+//			let set=new Set(["a","b","c","a"]);
+//			
+//			set.delete("a");
+//			console.log(set);
+//			set.add("e");
+//			console.log(set);
+//			set.clear();
+//			console.log(set.has("c")); //true
+//			console.log(set.size);
+//			
+//			for(let s of set){
+//				console.log(s);
+//			}
+				
+//			for(let s of set.keys()){
+//				console.log(s);
+//			}
+//			for(let s of set.values()){
+//				console.log(s);
+//			}
+//			
+//			for(let s of set.entries()){
+//				console.log(s);
+//			}
+
+
+
+//			let arr=[1,2,3,4,5,3,21,3,3,4,5];
+//			let set1=new Set(arr);
+//			for(let s of set1){
+//				console.log(s);
+//			}
+//			let arr2=[...set1];
+//			console.log(arr2);
+
+
+//			let s=new Set([1,2,3]);
+//			s=new Set([...s].map((value)=>
+//				value*3));
+//			console.log(s);
+
+
+//			let s=new Set([1,2,3,4,5,6,7,]);
+//			s=new Set([...s].filter(val=>{
+//				return val%2==0;
+//			}));
+//			console.log(s);
+
+//			let setJson=new Set();
+//			let json={
+//				name:"zhaojie",
+//				age:"17"
+//			}
+//			
+//			let json1={
+//				name:"wangchao",
+//				age:"17",
+//				sex:"男"
+//			}
+//			let json2={
+//				name:"wangchao",
+//				age:"17",
+//				sex:"男"
+//			}
+//			setJson.add(json);
+//			setJson.add(json1);
+//			setJson.add(json2);
+//			console.log(setJson);
+
+
+//			for(let item of setJson){   //item默认是values
+//				console.log(item);
+//			}
+			
+//			setJson.forEach(v=>{
+//				console.log(v);
+//			});
+			
+			
+			/*WeakSet,他的成员只能是对象*/
+			let json={a:"1"}
+			let ws=new WeakSet();
+			ws.add(json);
+			console.log(ws);
+		</script>
+	</body>
+</html>

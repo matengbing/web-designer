@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+				box-sizing: border-box;
+			}
+			ul {
+				margin-left: 20px;
+			}
+			
+			.header ul li {
+				float: left;
+				width: 70px;
+				height: 40px;
+				border-top: 2px solid gray;
+				border-bottom: 2px solid gray;
+				background-color: darkgrey;
+				list-style: none;
+
+			}
+			
+			.header ul li:hover {
+				cursor: pointer;
+			}
+			.header  li:first-child {
+				border-left: 2px solid gray;
+			}
+			.header li:last-child {
+				border-right: 2px solid gray;
+			}
+			.header ul li.active {
+				border-top: 5px solid red;
+				border-bottom: 0px;
+				background-color: white;
+				border-left: 2px solid gray;
+			}
+			
+			
+			
+			.content,.content_first,.content_second,.content_third{
+				width: 100%;
+				height: 200px;
+				margin: 10px;
+			}
+			.content {
+				overflow: hidden;
+			}
+			.content ul li {
+				list-style: none;
+				background-image: url('img/ss.png');
+				background-position: 5px;
+				padding-left: 20px;
+				background-repeat: no-repeat;
+				
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<ul>
+				<li class="active first"><a>体育</a></li>
+				<li class="second"><a>NBA</a></li>
+				<li class="third"><a>体育视频</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="content_first">
+				<ul>
+					<li>体育</li>
+					<li>体育</li>
+					<li>体育</li>
+				</ul>
+				
+			</div>
+			<div class="content_second">
+				<ul>
+					<li>NBA</li>
+				</ul>
+			</div>
+			<div class="content_third">
+				<ul>
+					<li>体育视频</li>
+				</ul>
+			</div>
+		</div>
+		
+		
+	<script type="text/javascript">
+		$('.header .first').click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			$('.content_first').css('display','block').siblings().css('display','none');
+		});
+		$('.header .second').click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			$('.content_second').css('display','block').siblings().css('display','none');
+		});
+		$('.header .third').click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			$('.content_third').css('display','block').siblings().css('display','none');
+		});
+		
+	</script>
+	</body>
+</html>

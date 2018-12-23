@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery文字滚动</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0px;
+				box-sizing: border-box;
+			}
+			div {
+				height: 30px;
+				overflow: hidden;
+				line-height: 30px;
+			}
+			ul {
+				list-style: none;
+				cursor: pointer;
+				
+			}
+			ul li {
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<ul>
+				<li>推动联通混改 探索可复制可推广的制度性经验</li>
+				<li>马凯副总理参观2017年国际信息通信展中国联通展台</li>
+				<li>维护把混改作为国企改革重要突破口的正确抉择——联通混改的历史价值与改革标杆意义</li>
+				<li>“沃联天下 遇见未来” 中国联通多项创新成果亮相2017通信展</li>
+				<li>中国联通多项创新亮点业务精彩闪耀“2017世界电信展”</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			var time;  /*定时器变量*/
+			var height_li=$('.content ul li').height();  /*li元素高度*/
+			$(document).ready(function(){
+				start();
+				hover_stop();
+			});
+			/*启动定时器*/
+			function start(){
+				time=setInterval("autoScroll()",2000);
+			}
+			/*自动滚动*/
+			function autoScroll(){ 
+				$('.content ul').animate({marginTop:-height_li+"px"},1000,function(){
+					/*关键步骤，每次操作dom前需要先将marginTop恢复为0*/
+					$(this).css({marginTop:"0px"});
+					var li =$(this).children('li:first');
+					$(this).append(li);
+				}); 
+			}
+			
+			/*悬停在ul上时暂停定时器*/
+			function hover_stop(){
+				$('.content ul').mouseover(function(){
+					clearInterval(time);
+				}).mouseout(function(){
+					start();
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title><br />
+		<style type="text/css">
+			
+		</style>
+		
+		<script type="text/javascript">
+			window.onload=function(){
+				var ul=document.getElementById("ul");
+				var lists=ul.getElementsByTagName("li");
+				console.log(lists.length);
+				for (var i=0;i<lists.length;i++){
+					if(i%2==0){
+						lists[i].style.backgroundColor="red";
+					}else{
+						lists[i].style.backgroundColor="gray";
+					}
+				}
+				 
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<ul id="ul">
+				<li>首页</li>
+				<li>关于</li>
+				<li>产品</li>
+				<li>联系我们</li>
+			</ul>
+		</div>
+	</body>
+</html>

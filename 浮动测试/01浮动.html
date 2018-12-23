@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 <div style="border: solid 5px #0e0; width: 250px;">
+	        <div style="height: 50px; width: 50px; background-color: Red; float:left;">
+	        	
+	        </div>
+	        <div style="height: 100px; width: 100px; background-color: Green;">
+	           11111111111
+	           11111111111
+	        </div>
+        
+    	</div>
+		        <!--
+		        	可以看出浮动后虽然绿色div布局不受浮动影响，正常布局，
+		        	但是文字部分却被挤到了红色浮动div下边。要想阻止行框围绕在浮动元素外边，
+		        	可以使用clear属性，属性的left，right，both，none表示框的哪些边不挨着浮动框。
+		        -->
+        
+  
+    
+    
+      <div style="border: solid 5px #0e0; width: 250px;margin-top: 20px;">
+        <div style="height: 50px; width: 50px; background-color: Red; float:left;">
+        	
+        </div>
+        <div style="height: 100px; width: 100px; background-color: Green; clear:both;">
+           11111111111
+           11111111111
+        </div>
+        
+        <!--
+        	对元素清理实际上为前面的浮动元素留出了垂直空间,这样可以解决我们之前的一个问题，
+        	看前面的图片的时候我们发现div内的所有元素浮动的话就会不占据文档空间，
+        	这样父元素，高度为0，可能很多效果也不见了
+        -->
+        
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="" cellspacing="" cellpadding="">
+			<tr>
+				<th><input type="checkbox"  class="all"/></th>
+				
+			</tr>
+			
+			<tr>
+				<td><input type="checkbox"  /></td>
+				<td>Data1</td>
+				<td>Data2</td>
+				<td>Data3</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"  /></td>
+				<td>1Data1</td>
+				<td>2Data2</td>
+				<td>3Data3</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"  /></td>
+				<td>4Data1</td>
+				<td>5Data2</td>
+				<td>6Data3</td>
+			</tr>
+		</table>
+		
+		<script src="../js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('th :checkbox').change(function(){
+				$('td :checkbox').prop('checked',$(this).prop('checked'));
+				console.log($(this).prop('checked'));
+				if($(this).prop('checked')){
+					$('tr').css('background-color','red');
+					
+				}else{
+					$('tr').css('background-color','white');
+					console.log($(this).prop('checked'));
+//					$('td:checkbox').prop('checked',false);	
+				}
+			});
+			/*$('td :input[type=checkbox]').change(function(){
+				
+			})
+			
+			$('td').each(function(){
+				
+			})*/
+		</script>
+	</body>
+</html>

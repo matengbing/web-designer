@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery动画</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				font-size: 20px;
+				line-height: 20px;
+				padding: 60px;
+			}
+			
+			.pannel {
+				width: 600px;
+				border: 1px solid chartreuse;
+			}
+			.head {
+				padding: 5px;
+				background-color: antiquewhite;
+				cursor: pointer;
+			}
+			
+			.content {
+				padding: 5px;
+				background-color: aquamarine;
+				text-indent: 2em;
+				border: 1px solid greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="pannel">
+			<h5 class="head">标题</h5>
+			<div class="content">
+				在前面的章节中，我们展示了一些有关如何选取 HTML 元素的实例
+			          关键点是学习 jQuery 选择器是如何准确地选取您希望应用效果的元素。			
+				jQuery 元素选择器和属性选择器允许您通过标签名、属性名或内容对 HTML 元素进行选择。
+				选择器允许您对 HTML 元素组或单个元素进行操作。				
+				在 HTML DOM 术语中：
+				选择器允许您对 DOM 元素组或单个 DOM 节点进行操作。
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../js/jquery3.3.1.js" ></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.pannel h5.head').click(function(){
+				$('div.content').toggle(function(){
+					$(this).next().show();
+				},function(){
+					$(this).next().hide();
+				});
+				
+				});
+			});
+			
+		</script>
+	</body>
+</html>

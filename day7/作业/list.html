@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作业</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			.container_header {
+				margin-top: 100px;
+				font-size: 18px;
+				min-width: 1100px;
+				text-align: center;
+			}
+			.container_header .form {
+				width: 80%;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			.container_header input[type=text] {
+				display: inline-block;
+				width: 200px;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			.container_header input[type=button] {
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				background-color: #029AE5;
+				border: 0px;
+				color: white;
+			}
+			.container_header input[type=reset] {
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				background-color: #029AE5;
+				border: 0px;
+				color: white;
+			}
+			
+			.container_header .table {
+				width: 80%;
+				margin: 20px auto;
+				text-align: center;
+				min-height: 400px;
+				
+			}
+			
+			.container_header .table tr td span {
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				margin-left: 20px;
+				background-color: #029AE5;
+				cursor: pointer;
+				color: white;
+			}
+			.container_header .table table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			.container_header .table tr {
+				width: 100px;
+			}
+			.container_header .table tr td {
+				width: 200px;
+				height: 40px;
+				line-height: 30px;
+				border: 1px solid #FAEBD7;
+				border-collapse: collapse;
+			}
+			.container_header .table tr th {
+				border: 1px solid #FAEBD7;
+				border-collapse: collapse;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="container_header">
+			<div class="form">
+				<form action="" method="get">
+					姓名：<input type="text" name="username" class="username" placeholder="姓名"/>
+					编号：<input type="text" name="userid" class="userid" placeholder="编号"/>
+					职务：<input type="text" name="post" class="post" placeholder="职务" />
+					<input type="button" name="save" class="save" value="保存" />
+					<input type="reset" name="reset" class="reset" value="重置" />
+				</form>
+			</div>
+			
+			
+			<div class="table">
+				<table>
+					<tr>
+						<th>姓名</th>
+						<th>编号</th>
+						<th>职务</th>
+						<th>操作</th>
+					</tr>
+					
+					
+				</table>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			var table=$('.container_header .table table');
+			var userids=[];
+			var index=0;
+			/*获取json数据，生成表格*/
+			function getJsonData(){
+				$.ajax({
+				   url: "person.json",
+				   type: "GET",
+				   dataType: "json", 
+				   success: function(data) {
+				       $.each(data, function(i, item) {
+							addTr(item.name,item.no,item.zhiwu);
+				       })
+				   }
+				})
+			}
+			/*在表格中加入一行内容*/
+			function addTr(username,userid,post){
+				var $tr=$('<tr></tr>');
+				var $td_username=$('<td>'+username+'</td>');
+				var $td_userid=$('<td>'+userid+'</td>');
+				var $td_post=$('<td>'+post+'</td>');
+//				var $btn_edit=$('<span>编辑</span>');
+				var $btn=$('<td>'+'<span class="edit">编辑</span>'+'<span class="delete">删除</span>'+'</td>');
+				$tr.append($td_username);
+				$tr.append($td_userid); 
+				$tr.append($td_post);
+				$tr.append($btn);
+				table.append($tr);	
+				userids[index]=userid;
+				index++;
+			}
+			
+			/*编辑按钮的点击事件*/
+			$('.container_header .table').on('click', 'table span.edit', function(){
+				var $self_td=$(this).parent('td');
+				var $username=$self_td.siblings('td').eq(0).text();
+				var $userid=$self_td.siblings('td').eq(1).text();
+				var $post=$self_td.siblings('td').eq(2).text();
+				$('.container_header .form input.username').val($username);
+				$('.container_header .form input.userid').val($userid).attr("disabled","disabled");
+				$('.container_header .form input.post').val($post);;
+				$self_td.parents('tr').css('background-color','red').siblings('tr').css('background-color','');
+				});
+			
+			
+			$('.container_header .table').on('click', 'table span.delete', function(){
+				  var flag=window.confirm("确认删除？");
+				  if (flag){
+				  	var userid_td=$(this).parent('td').siblings('td').eq(1).text();
+				  	 $(this).parents('tr').remove();
+				  	 try{
+				  	 	 userids.splice($.inArray(userid_td,userids),1);
+				  	 }catch(e){
+				  	 	console.log("删除数组中内容失败");
+				  	 }
+				  	
+				  }
+				 
+				});
+			
+			
+			/*保存按钮点击事件*/
+			
+				$('.container_header .form input.save').click(function(){
+					var username=$(this).siblings('input.username').val();
+					var userid=$(this).siblings('input.userid').val();
+					var post=$(this).siblings('input.post').val();
+					userid=userid.replace(/(^\s*)|(\s*$)/g,"");
+					if(userid==""){
+						alert("编号不能为空");
+					}
+					if(userids.indexOf(userid)>=0){
+						console.log("已经存在");
+						var tds=$('.container_header .table').find('td');
+						console.log(tds.eq(1).text());
+						$.each(tds, function(i) {
+							if(tds.eq(i).text()==userid){
+								$(tds.siblings('td').eq(0).text(username));
+								$(tds.siblings('td').eq(2).text(post));
+							}
+						});
+						
+					}else{
+						addTr(username,userid,post);
+					}
+				});
+			
+			$(document).ready(function(){
+				getJsonData();
+			
+				
+			});
+		</script>
+	</body>
+</html>

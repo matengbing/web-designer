@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				height: 30px;
+				overflow: hidden;
+			}
+			ul {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+				cursor: pointer;
+			}
+			
+			ul li {
+				height: 30px;
+				line-height: 30px;
+				
+			}
+			#div1 {
+				float: left;
+			}
+			#div2 {
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<ul>
+				<li>aaaaaaaaaaaaa</li>
+				<li>bbbbbbbbbbbbb</li>
+				<li>ccccccccccccc</li>
+				<li>ddddddddddddd</li>
+			</ul>
+		</div>
+		
+		
+		<div id="div2">
+			<ul>
+				<li>aaaaaaaaaaaaa</li>
+				<li>bbbbbbbbbbbbb</li>
+				<li>ccccccccccccc</li>
+				<li>ddddddddddddd</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			
+			var times;
+			class TextScrool extends Object{
+					/*obj是ul*/
+				constructor(obj,speed){
+					super();
+					this.obj=obj;
+					this.speed=speed;
+					this.height=this.obj.find('li').height();
+					this.startScroll();
+				}
+				startScroll(){
+					setInterval(()=>{this.scroll()},this.speed);
+				}
+				
+				scroll(){
+					this.obj.animate({
+						/*当前动画,上移this.height*/
+						marginTop:"-"+this.height+'px'
+					},this.speed,()=>{
+						/*把当前的margin-top设为0,将第一个li元素移至最后*/
+						this.obj.css({'margin-top':'0px'});
+						var firstLi=this.obj.find('li:first');
+						this.obj.append(firstLi);
+					});
+				}
+			}
+			
+			
+			new TextScrool($('#div1 ul'),500);
+//			new TextScrool(document.querySelectorAll("#div1 ul"),500);
+			new TextScrool($('#div2 ul'),500);
+		</script>
+	</body>
+</html>

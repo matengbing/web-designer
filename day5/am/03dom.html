@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				line-height: 30px;
+			}
+			ul,li {
+				list-style: none;
+			}
+			ul {
+				margin: 20px auto; 
+				width: 300px;
+				border: 1px solid chartreuse;
+				padding: 20px;
+			}
+			li{
+				border-bottom: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+//			var btn=document.getElementById("btn");
+//			console.log(btn);
+//			var ul=document.getElementsByTagName("ul");
+//			var lists=document.getElementsByTagName("li");
+//			btn.onclick=function(){ 
+//				console.log("s"); 
+////				var nli=document.createElement("li");
+////				nli.innerHTML("新增li标签内容");
+////				nli.style.backgroundColor="#ccc";
+////				ul.appendChild(nli);
+//			}
+		</script> 
+	</head> 
+	<body>
+		<ul id="list">
+			<li>轻轻地我走了</li>
+			<li>轻轻地我走了</li>
+			<li>轻轻地我走了</li>
+			<li>轻轻地我走了</li>
+		</ul>
+		
+		<div style="text-align: center;">
+			<input type="button"  id="btn"  value="添加"/>
+		</div>
+	</body>
+	
+	<script type="text/javascript"  defer="true">
+		var btn=document.getElementById("btn");
+		var ul=document.getElementsByTagName("ul");
+		//var lists=document.getElementsByTagName("li");
+		var listss = ul[0].childNodes;
+		btn.onclick=function(){ 
+			var nli=document.createElement("li");
+			nli.innerHTML="新增li标签内容";
+			nli.style.backgroundColor="#ccc";
+			//ul[0].appendChild(nli);
+			ul[0].insertBefore(nli, listss[0]);
+		}
+	</script>
+</html>

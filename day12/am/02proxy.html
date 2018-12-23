@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let person={
+				"name":"zhangsan"
+			}	
+			let obj=new Proxy(person,{
+				get(target,property){
+					if(property in target){
+						console.log(property);
+						return target[property];
+//						return target.property; //这样不行
+						
+					}else{
+						return false;
+					}
+				}
+			});
+			
+			console.log(obj.name); //true
+			console.log(false); //false
+		</script>
+	</body>
+</html>

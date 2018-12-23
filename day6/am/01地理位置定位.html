@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>地理位置</title>
+	</head>
+	<body>
+		<div id="tip">
+			
+		</div> 
+		<div id="log">
+			
+		</div>
+		
+		<div id="lat">
+			
+		</div>
+		
+		<div id="accuracy">
+			
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript" defer="defer">
+		/*定位成功回调函数*/
+		function geo_success(position){
+			console.log(position.coords);
+			document.getElementById("log").innerHTML="经度:"+position.coords.longitude;		
+			document.getElementById("lat").innerHTML="纬度:"+position.coords.latitude;
+			document.getElementById("accuracy").innerHTML="精确度:"+position.coords.accuracy+"米";
+		}
+		/*定位失败回调函数*/
+		function geo_error(error){
+			var error_div=document.getElementById("error");
+			switch(error.code){
+				case 0:
+					error_div.innerHTML="未知错误";
+					break;
+				case 1:
+					error_div.innerHTML="没有定位权限";
+					break;
+				case 2:
+					error_div.innerHTML="无法获取当前位置";
+					break;
+				case 3:
+					error_div.innerHTML="操作超时";
+					break;
+			}
+//			 alert('ERROR(' + error.code + '): ' + error.message);
+		}
+		/*定位参数*/
+		var options={};
+		/*判断当前浏览器是否支持定位*/
+		if (navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(geo_success,geo_error,options);
+		}else{
+			var tip=document.getElementById("tip");
+			tip.innerHTML("您的浏览器版本太久，建议使用最新版本");
+		}
+	</script>
+</html>

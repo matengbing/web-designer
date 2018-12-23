@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table class="table">
+			<tr>
+				<th>姓名</th>
+				<th>编号</th>
+				<th>职务</th>
+				<th>操作</th>
+			</tr>
+			
+			<!--<tr>
+				<td>xxx</td>
+				<td>1</td>
+				<td>校长</td>
+				<td>
+					<input type="button" name="edit" class="deit" value="编辑"/>
+					<input type="button" name="delete" class="delete" value="删除" />
+				</td>
+			</tr>-->
+			
+		</table>
+		
+		
+		
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			
+			function addTr(name,id,post){
+				var tr=$('<tr></tr>');
+				var td_name=$('<td>'+name+'</td>');
+				var td_id=$('<td>'+id+'</td>');
+				var td_post=$('<td>'+post+'</td>');
+				var td_btn_edit=$('<input type="button" value="编辑" class="edit" />');
+				var td_btn_delete=$('<input type="button" value="删除" class="delete" />');
+				var td_btn=$('<td></td>');
+				td_btn.append(td_btn_edit).append(td_btn_delete);
+				tr.append(td_name).append(td_id).append(td_post).append(td_btn);
+				$('.table').append(tr);
+			}
+			
+			$('.table').on('click','.edit',function(){
+				console.log("编辑按钮点击事件");
+			});
+			$(document).ready(function(){
+				addTr(1,1,2);
+			});
+		</script>
+	</body>
+</html>

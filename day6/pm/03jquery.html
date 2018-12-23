@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-2.1.0.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		
+		<ul>
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+		</ul>
+		
+		<a href="www.baidu.com">baidu</a>
+		
+		<script type="text/javascript">
+			/*偶数行*/
+			$('li:even').css("background-color","red");
+			/*下标大于第四行*/
+			$('li:gt(4)').css("background-color","greenyellow");
+			
+			$('a[href="www.baidu.com"]').css("background-color",'red');
+			$('a[href^="www"]').css("background-color","aquamarine");
+		</script>
+	</body>
+</html>

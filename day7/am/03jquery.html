@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 300px;
+				height: 200px;
+				background-color: chartreuse;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="father">
+			<input type="button" id="slid" value="slid"/>
+			<input type="button" id="fade" value="fade" />
+			<input type="button" id="add" value="slid" />
+			<div class="box">
+				
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			
+		$(document).ready(function(){
+			$('#slid').click(function(){
+				$('.box').slideToggle();
+			});
+			
+			$('#fade').click(function(){
+				$('.box').fadeToggle();	 
+			});
+			$('#add').click(function(){
+				$('.box').append('<h1>'+new Date()+'</h1>').slideToggle();
+			});
+		});
+		
+		
+		</script>
+	</body>
+</html>

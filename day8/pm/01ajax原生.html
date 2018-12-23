@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax</title>
+		<style type="text/css">
+			select {
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				
+				background-color: white;
+			}
+			
+			input[type=button] {
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				background-color: #13D1BE;
+				margin: 0px;
+				padding: 0px;
+				border: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		省份:<select id="province">
+			<option value="-1">省份</option>
+		</select>
+		
+		城市:<select id="city">
+			<option value="-1">城市</option>
+			
+		<br />
+		<input type="button" id="btn" value="获取数据" />
+		</select>
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			var xmlHttp;
+			var json;
+			$(document).ready(function(){
+				createXmlHttp();
+			});
+			
+			
+			/*创建XMLHttpRequest*/
+			function createXmlHttp(){
+				if(window.ActiveXObject){
+					xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}else{ 
+					xmlHttp=new XMLHttpRequest();
+				}
+			
+			document.getElementById('btn').onclick=function(){
+				createXmlHttp();
+				xmlHttp.open('GET','address.json',true);
+				xmlHttp.onreadystatechange=callBack;
+				xmlHttp.send();
+				}
+				
+			}
+			
+			function callBack(){ 
+				if(xmlHttp.readyState==4){
+					if(xmlHttp.status==200){
+						var datastr=xmlHttp.responseText;
+						json=eval("("+datastr+")");
+						for (var i=0;i<json.province.length;i++){
+							var province=json.province[i].name;
+							var citys=json.province[i].city;
+							document.getElementById('province').options.add(new Option(province,province));
+							document.getElementById('city').options.add(new Option(citys,citys));
+						}
+					}
+				}
+			}
+			
+		</script>
+	</body>
+</html>

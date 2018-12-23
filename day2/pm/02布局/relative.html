@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				font-size: 40px;
+				color: white;
+				text-align: center;
+				
+			}
+			ul,li {
+				list-style: none;
+			}
+			
+			.content {
+				height: 400px;
+				background-color: #008000;
+			}
+			
+			.content ul li {
+				float: left;
+				height: 100px;
+				width: 100px;
+				border: 5px solid yellow;
+				margin: 50px;
+			}
+			
+			/*相对于原来的位置向左偏移50px，向下20px*/
+			.content ul li:first-child {
+				position: relative;  /*relative是相对于自己原来的位置*/
+				top: 20px;
+				right: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/links.css"/>
+		
+	</head>
+	<body>
+		<div class="index_service">
+			<div class="title">
+				<span class="active span1">
+					品牌专区
+				</span>
+				<span class="span2">
+					业务介绍
+				</span>
+			</div><!--end title-->
+			
+			<div class="containt">
+				<div class="img_containt_brand">
+					<div class="left">
+						<ul class="list_brand">
+							<li>
+								<img class="transform" src="../img/brand_05.png" />
+							</li>
+							
+							<li class="right_find">
+								<img class="transform" src="../img/brand_15.png" />
+							</li>
+						</ul>
+					</div><!--end left-->
+					
+					<div class="right">
+						<ul class="list_brand">
+							<li>
+								<img class="transform" src="../img/brand_09.png" />
+							</li>
+							
+							<li class="bottom_find">
+								<img class="transform" src="../img/brand_20.png" />
+							</li>
+						</ul>
+					</div><!--end right-->
+				</div> <!--end img_containt-->
+				
+				<!--start img_containt-->
+				<div class="img_containt_business">
+					<div class="left">
+						<ul class="list_business">
+							<li>
+								<img class="transform" src="../img/bus_01.png" />
+							</li>
+							
+							<li class="right_find">
+								<img class="transform" src="../img/bus_02.png" />
+							</li>
+						</ul>
+					</div><!--end left-->
+					
+					<div class="right">
+						<ul class="list_business">
+							<li>
+								<img  class="transform" src="../img/bus_03.png" />
+							</li>
+							
+							<li class="bottom_find">
+								<img class="transform" src="../img/bus_04.png" />
+							</li>
+						</ul>
+					</div><!--end right-->
+				</div> <!--end img_containt-->
+				
+			</div><!--end index_service-->
+		
+			<div class="a_border">
+				<h2>链接专区</h2>
+			</div>
+			
+			<div class="index_talk">
+				<ul class="by_talk" style="overflow: hidden;">
+					<li id="red1" style="display: block;">
+						<img src="../img/talk5.png" />
+						投资者关系
+					</li>
+					<li id="red2" class="bg_red" style="display: none;">
+						<a>A股官网</a>
+						<a href="#">红筹官网</a>
+					</li>
+					<li id="red3" style="display: block;">
+						<img src="../img/talk6.png" />
+						物资采购
+					</li>
+					<li id="red4" class="bg_red" style="display: none;">
+						<a href="#">中国联通采购与招标网</a>
+						<a href="#">联通合作方自服务门户</a>
+					</li>
+					<li id="red5" style="display: block;">
+						<img src="../img/talk1.png" />
+						网上营业厅
+					</li>
+					<li id="red6" class="bg_red" style="display: none;">
+						<a href="#">网上营业厅 http://www.10010.com</a>
+					</li>
+					<li class="li7"  style="display: block;">
+						<a href="#">
+							<img src="../img/talk3.png" />
+							省分公司及子公司
+						</a>
+					</li>
+				</ul>
+			</div>
+			<script src="../js/jquery-2.1.0.js"></script>
+		<script src="../js/links.js" type="text/javascript" defer="defer"></script>
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			$('.index_talk .by_talk #red1').mouseover(function(){
+				$(this).css('display','none');
+				$('.index_talk .by_talk #red2').css('display','block');
+			});
+			$('.index_talk .by_talk #red2').mouseout(function(){
+				$(this).css('display','none');
+				$('.index_talk .by_talk #red1').css('display','block');
+			});
+			
+			$('.index_talk .by_talk #red3').mousemove(function(){
+				$(this).css('display','none');
+				$('.index_talk .by_talk #red4').css('display','block');
+			});
+			$('.index_talk .by_talk #red4').mouseout(function(){
+				$(this).css('display','none');
+				$('.index_talk .by_talk #red3').css('display','block');
+			});
+			
+			$('.index_talk .by_talk #red5').mousemove(function(){
+				$(this).css('display','none');
+				$('.index_talk .by_talk #red6').css('display','block');
+			});
+			
+			$('.index_talk .by_talk #red6').mouseout(function(){
+				$(this).css('display','none');
+				$('.index_talk .by_talk #red5').css('display','block');
+			});
+		</script>
+	</body>
+</html>

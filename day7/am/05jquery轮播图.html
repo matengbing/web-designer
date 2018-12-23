@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				list-style: none;
+				text-decoration: none;
+			}
+			
+			.banner {
+				width: 100%;
+				height: 300px;
+				overflow: hidden;
+				border: 1px solid chartreuse;
+				position: relative;
+			}
+			.banner:hover {
+				cursor: pointer;
+			}
+			.banner:hover .btn {
+				display: block;
+			}
+			.banner .img {
+				width:20000px;
+				height: 100%;
+				position: absolute;
+				
+			}
+			
+			.banner .img li {
+				float: left;
+				
+			}
+			
+			.banner .img li img {
+				width: 100%;
+				height: 300px;
+				
+			}
+			
+			.banner .num {
+				width: 100%;
+				position: absolute;
+				bottom: 0px;
+				text-align: center;
+			}
+			.banner .num li {
+				/*float: left;*/
+				display: inline-block;
+				background-color: gray;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				margin: 0 5px;
+				cursor: pointer;
+				color: red;
+			}
+			.banner .num li.active {
+				background-color: black;
+			}
+			.btn_btn_l,.btn_btn_r{
+				position: absolute;
+				width: 30px;
+				height: 50px;
+				top: 50%;
+				cursor: pointer;
+				line-height: 50px;
+				font-size: 40px;
+				background-color: rgba(0,0,0,0.2);
+				display: none;
+				/*filter: alpha(opacity:0.5);*/
+				/*background-color: red;*/
+			}
+			.banner .btn_btn_l {
+				left: 0px;
+			}
+			.banner .btn_btn_r {
+				right: 0px;
+				
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<ul class="img">
+				<li><img src="../images/100237340376716868.jpg" /></li>
+				<li><img src="../images/493972379168861540.jpg" /></li>
+				<li><img src="../images/827149262194036037.jpg" /></li>
+				<li><img src="../images/866511339066391919.jpg"/></li>
+				<li><img src="../images/887003105387567726.jpg" /></li>
+			</ul>
+			
+			<ul class="num">
+			
+			</ul>
+			
+			<div class="btn btn_btn_l">&lt;</div>
+			<div class="btn btn_btn_r">&gt;</div>
+		</div>
+		
+		
+		  
+		<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript">
+			var width=$('.banner').width();
+			var width_imge=$('.banner .img li img').width();
+			var time;
+			var index=0;
+			var length=$('.banner .img li').length;
+			/*克隆第一张图片*/
+			var first_img_clone=$('.banner .img li').first().clone();
+			$('.banner .img').append(first_img_clone);
+			
+			for(var i=0;i<length;i++){
+				$('.banner .num').append('<li></li>');
+			}
+			
+			$('.banner .num li').first().addClass('active');
+			/*移动事件*/
+			function moveImg(){ 
+				index++;
+				if (index==length+1){
+					$('.banner .img').css({left:"0px"});
+					index=1;  
+					
+				} 
+				
+				/*左右箭头过头了*/
+				if(index<0){
+					$('.banner .img').css({left:-(length-1)*width_imge+"px"});
+					index=length-2;
+				}
+				
+				if (index==length){
+					$('.banner .num li').eq(0).addClass('active').siblings().removeClass('active');
+				}else{
+					$('.banner .num li').eq(index).addClass('active').siblings().removeClass('active');
+				}
+				
+				/*关键：动画先停止再加上动画*/
+				$('.banner .img').stop().animate({left:-width_imge*index+"px"},1000);
+				
+			}
+			/*定时器开始*/
+			function startmove(){
+				time=setInterval("moveImg()",2000);
+			}
+			/*悬停暂停*/
+			$('.banner').mouseover(function(){
+				clearInterval(time);
+			});
+			$('.banner').mouseout(function(){
+				startmove();
+			});
+			
+			/*鼠标划入事件*/ 
+			$('.banner .num li').hover(function(){
+				var i=$(this).index();
+				index=i;
+				$('.banner .img').stop().animate({left:-width_imge*i+"px"},2000);
+				$(this).addClass('active').siblings().removeClass('active');
+			});
+			
+			
+			/*左边按钮*/
+			$('.banner .btn_btn_l').click(function(){
+				
+				index=index-2;
+				moveImg();
+			});
+			 
+			/*右侧按钮*/
+			$('.banner .btn_btn_r').click(function(){
+				
+				moveImg();
+			});
+			
+			
+			/*窗口大小改变*/
+			$(window).resize(function(){
+			    width_imge=$('.banner').width();
+				$('.banner img').width(width_imge);
+
+				moveImg();
+			});
+			$(document).ready(function(){
+				startmove();
+			});
+		</script> 
+	</body>
+</html>

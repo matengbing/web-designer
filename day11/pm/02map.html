@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>map</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			let josn={
+//				name:"abc",
+//				age:14
+//			}
+//			let josn1={
+//				name:"abc",
+//				age:14
+//			}
+//			console.log();
+
+
+
+			let map=new Map();
+			map.set('name','abc');
+			map.set(0);   //name:abc  0:undefined
+			console.log(map);
+			
+			let json={
+				name:'123',
+				age:'123'
+			}
+			map.set(json,true);
+			console.log(map);
+		</script>
+	</body>
+</html>
